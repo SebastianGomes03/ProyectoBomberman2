@@ -31,7 +31,7 @@ public class Player extends Entity {
 		this.playerAction = IDLE;
 		this.playerSpeed = 1.0f * Game.SCALE;
 		loadAnimations();
-		initHitbox(32, 48);
+		initHitbox(28, 28);
 
 	}
 

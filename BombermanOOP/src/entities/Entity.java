@@ -30,7 +30,7 @@ public abstract class Entity {
 	}
 
 	protected void initHitbox(int width, int height) {
-		hitbox = new Rectangle2D.Float(x, y, (int)(width * Game.SCALE)-2, (int)(height * Game.SCALE));
+		hitbox = new Rectangle2D.Float(x , y, (int)((width) * Game.SCALE)-2, (int)((height) * Game.SCALE)-2);
 	}
 
 //	protected void updateHitbox() {
