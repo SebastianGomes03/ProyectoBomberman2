@@ -38,7 +38,7 @@ public class Playing extends State implements Statemethods {
 		super(game);
 		initClasses();
         backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.BACKGROUND);
-		//loadStartLevel();
+		loadStartLevel();
 	}
 
 	public void loadNextLevel(){
@@ -53,7 +53,7 @@ public class Playing extends State implements Statemethods {
 
 	private void initClasses() {
 		levelManager = new LevelManager(game);
-		//objectManager = new ObjectManager(this);
+		objectManager = new ObjectManager(this);
 
 		player = new Player(200, 200, (int) (32 * Game.SCALE), (int) (48 * Game.SCALE), this);
 		player.loadLvlData(levelManager.getCurrentLevel().getLevelData());
@@ -67,7 +67,7 @@ public class Playing extends State implements Statemethods {
 			pauseOverlay.update();
 		}else{
 			levelManager.update();
-			//objectManager.update();
+			objectManager.update();
 			player.update();
 			checkCloseToBorder();
 		}
@@ -95,7 +95,7 @@ public class Playing extends State implements Statemethods {
 
 		levelManager.draw(g, xLvlOffset);
 		player.render(g, xLvlOffset);
-		//objectManager.draw(g, xLvlOffset);
+		objectManager.draw(g, xLvlOffset);
 
 		if (paused){
 			g.setColor(new Color(0,0,0,150));
@@ -109,7 +109,7 @@ public class Playing extends State implements Statemethods {
 		gameOver = false;
 		paused = false;
 		player.resetAll();
-		//objectManager.resetAllObjects();
+		objectManager.resetAllObjects();
 	}
 
 	public void setGameOver(boolean gameOver){

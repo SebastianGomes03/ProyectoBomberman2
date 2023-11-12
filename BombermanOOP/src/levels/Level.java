@@ -30,11 +30,21 @@ public class Level {
 	public Level(BufferedImage img) {
 		this.img = img;
 		createLevelData();
+		createPotions();
+		createContainers();
 		calcPlayerSpawn();
+	}
+
+	private void createContainers() {
+		containers = HelpMethods.GetContainers(img);
 	}
 
 	private void calcPlayerSpawn() {
 		playerSpawn = GetPlayerSpawn(img);
+	}
+	
+	private void createPotions() {
+		potions = HelpMethods.GetPotions(img);
 	}
 
 	private void createLevelData() {
