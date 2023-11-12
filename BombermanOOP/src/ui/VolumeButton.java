@@ -4,9 +4,9 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import utilz.LoadSave;
-import utilz.Constants.*;
+//import utilz.Constants.*;
 
-import static utilz.Constants.Ui.PauseButtons.*;
+//import static utilz.Constants.Ui.PauseButtons.*;
 import static utilz.Constants.Ui.VolumeButtons.*;
 
 public class VolumeButton extends PauseButton{

@@ -2,12 +2,12 @@ package main;
 
 import java.awt.Graphics;
 
-import entities.Player;
+//import entities.Player;
 import gamestates.Gamestate;
 import gamestates.Menu;
 import gamestates.Playing;
-import levels.LevelManager;
-import objects.ObjectManager;
+//import levels.LevelManager;
+//import objects.ObjectManager;
 
 public class Game implements Runnable {
 

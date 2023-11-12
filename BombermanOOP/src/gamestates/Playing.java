@@ -2,12 +2,12 @@ package gamestates;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.RenderingHints.Key;
+//import java.awt.RenderingHints.Key;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.util.Random;
+//import java.util.Random;
 
 import entities.Player;
 import levels.LevelManager;
@@ -32,7 +32,7 @@ public class Playing extends State implements Statemethods {
     private boolean gameOver = false;
 
 	private BufferedImage backgroundImg;
-	private Random rnd = new Random();
+	//private Random rnd = new Random();
 
 	public Playing(Game game) {
 		super(game);

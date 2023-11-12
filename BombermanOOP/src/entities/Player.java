@@ -57,7 +57,7 @@ public class Player extends Entity {
 
 	private void updateAnimationTick() {
 		aniTick++;
-		if (aniTick >= 25) {
+		if (aniTick >= aniSpeed) {
 			aniTick = 0;
 			aniIndex++;
 			if (aniIndex >= GetSpriteAmount(playerAction)) {
