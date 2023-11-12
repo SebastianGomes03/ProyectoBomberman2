@@ -27,7 +27,7 @@ public class LoadSave {
 	public static final String BOMB_PIERCE = "bomb_pierce.png";
 	public static final String POTION_ATLAS = "potions_sprites.png";
 	public static final String CONTAINER_ATLAS = "objects_sprites.png";
-	public static final String MENU_BUTTONS = "button_atlas.png";
+	public static final String MENU_BUTTONS = "buttons2.png";
 	//public static final String MENU_BACKGROUND = "menu_background.png";
 	public static final String PAUSE_BACKGROUND = "pause_menu.png";
 	public static final String SOUND_BUTTONS = "sound_button.png";

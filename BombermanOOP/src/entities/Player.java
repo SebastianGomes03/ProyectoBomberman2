@@ -31,7 +31,7 @@ public class Player extends Entity {
 		this.playerAction = IDLE;
 		this.playerSpeed = 1.0f * Game.SCALE;
 		loadAnimations();
-		initHitbox(28, 28);
+		initHitbox(32, 32);
 
 	}
 
@@ -52,7 +52,7 @@ public class Player extends Entity {
 		//g.drawImage(animations[playerAction][aniIndex], (int) (hitbox.x), (int) (hitbox.y),(int)hitbox.width, (int)hitbox.height, null);
 
 		g.drawImage(animations[playerAction][aniIndex], (int)(hitbox.x) - lvlOffset, (int)(hitbox.y), (int)width , (int)height, null);
-		drawHitbox(g, lvlOffset);
+		//drawHitbox(g, lvlOffset);
 	}
 
 	private void updateAnimationTick() {
