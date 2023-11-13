@@ -8,6 +8,7 @@ public class GameContainer extends GameObject{
 
     public GameContainer(int x, int y, int objType) {
         super(x, y, objType);
+        //initHitbox(32,32 );
         createHitbox();
     }
 

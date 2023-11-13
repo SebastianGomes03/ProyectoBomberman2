@@ -16,11 +16,16 @@ public abstract class Entity {
 	protected int aniIndex;
 
 	public Entity(float x, float y, int width, int height) {
-		this.x = x;
+		this.x = x ;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 
+	}
+
+	protected void initHitbox(int width, int height) {
+		//hitbox = new Rectangle2D.Float(x+3, y+16+3, (int) (width -6 * Game.SCALE), (int) (height - 16 -6 * Game.SCALE));
+		hitbox = new Rectangle2D.Float(x + 16, y + 16, (width * Game.SCALE) - 16, (height * Game.SCALE) - 16);
 	}
 
 	protected void drawHitbox(Graphics g, int xLvlOffset){
@@ -28,15 +33,6 @@ public abstract class Entity {
 		g.setColor(Color.PINK);
 		g.drawRect((int)hitbox.x - xLvlOffset, (int)hitbox.y, (int)hitbox.width, (int)hitbox.height);
 	}
-
-	protected void initHitbox(int width, int height) {
-		hitbox = new Rectangle2D.Float(x , y, (int)((width -3) * Game.SCALE), (int)((height-3) * Game.SCALE));
-	}
-
-//	protected void updateHitbox() {
-//		hitbox.x = (int) x;
-//		hitbox.y = (int) y;
-//	}
 
 	public Rectangle2D.Float getHitbox() {
 		return hitbox;

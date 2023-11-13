@@ -55,7 +55,7 @@ public class Playing extends State implements Statemethods {
 		levelManager = new LevelManager(game);
 		objectManager = new ObjectManager(this);
 
-		player = new Player(200, 200, (int) (32 * Game.SCALE), (int) (32 * Game.SCALE), this);
+		player = new Player(200, 200, (int) (32 * Game.SCALE), (int) (48 * Game.SCALE), this);
 		player.loadLvlData(levelManager.getCurrentLevel().getLevelData());
 		player.setSpawn(levelManager.getCurrentLevel().getPlayerSpawn());
 		pauseOverlay = new PauseOverlay(this);
@@ -94,8 +94,8 @@ public class Playing extends State implements Statemethods {
 		g.drawImage(backgroundImg, 0, 0, Game.GAME_WIDTH, Game.GAME_HEIGHT, null);
 
 		levelManager.draw(g, xLvlOffset);
-		player.render(g, xLvlOffset);
 		objectManager.draw(g, xLvlOffset);
+		player.render(g, xLvlOffset);
 
 		if (paused){
 			g.setColor(new Color(0,0,0,150));
