@@ -17,6 +17,7 @@ public class Player extends Entity {
 	private int aniTick, aniIndex, aniSpeed = 25;
 	private int playerAction = IDLE;
 	private boolean moving = false;
+	private boolean dying = true;
 	private boolean left, up, right, down;
 	private float playerSpeed = 0.5f * Game.SCALE;
 	private int[][] lvlData;
@@ -29,6 +30,8 @@ public class Player extends Entity {
 		super(x, y, width, height);
 		this.playing = playing;
 		this.playerAction = IDLE;
+		this.maxHealth = 1;
+		this.currentHealth = maxHealth;
 		this.playerSpeed = 0.5f * Game.SCALE;
 		loadAnimations();
 		initHitbox(32,  34);
@@ -43,15 +46,20 @@ public class Player extends Entity {
 	}
 
 	public void update() {
+		float xSpeed = 0, ySpeed = 0;
 		updatePos();
 		updateAnimationTick();
-		setAnimation();
+		//while(checkObjectCollision()){
+		//	playerSpeed = 0;
+		//	moving = false;
+		//}
+		checkBoxTouched();
+		checkObjectTouched();
+		setAnimation();	
 	}
 
 	public void render(Graphics g, int lvlOffset) {
 		g.drawImage(animations[playerAction][aniIndex], (int)(-3+hitbox.x), (int)(-22+hitbox.y),(int)(6 + hitbox.width), (int)(22+hitbox.height), null);
-
-		//g.drawImage(animations[playerAction][aniIndex], (int)(hitbox.x) - lvlOffset, (int)(hitbox.y), (int)width , (int)height, null);
 		//drawHitbox(g, lvlOffset);
 	}
 
@@ -136,7 +144,6 @@ public class Player extends Entity {
 			hitbox.y += ySpeed;
 			moving = true;
 		}
-
 	}
 
 	private void loadAnimations() {
@@ -197,6 +204,14 @@ public class Player extends Entity {
 		return lvlData;
 	}
 
+	private void checkBoxTouched(){
+		playing.checkObjectHit(hitbox);
+	}
+
+	private void checkObjectTouched(){
+		playing.checkObjectTouched(hitbox);
+	}
+
 	public void resetAll() {
 		resetDirBooleans();
 		moving = false;
@@ -205,5 +220,12 @@ public class Player extends Entity {
 		hitbox.x = x;
 		hitbox.y = y;
     }
-	
+
+	public boolean getMoving() {
+		return moving;
+	}
+
+	private boolean checkObjectCollision(){
+		return (playing.checkObjectCollision(hitbox, moving));
+	}
 }

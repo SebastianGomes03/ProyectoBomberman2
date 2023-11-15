@@ -14,6 +14,8 @@ public abstract class Entity {
 	protected Rectangle2D.Float hitbox;
 	protected int state;
 	protected int aniIndex;
+	protected int maxHealth;
+	protected int currentHealth;
 
 	public Entity(float x, float y, int width, int height) {
 		this.x = x ;

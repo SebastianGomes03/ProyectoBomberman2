@@ -8,7 +8,7 @@ public class GameContainer extends GameObject{
 
     public GameContainer(int x, int y, int objType) {
         super(x, y, objType);
-        //initHitbox(32,32 );
+        initHitbox(32,32);
         createHitbox();
     }
 
@@ -22,7 +22,6 @@ public class GameContainer extends GameObject{
 
         }else{
             initHitbox(23, 25);
-
             xDrawOffset = (int)(8 * Game.SCALE);
             yDrawOffset = (int)(5 * Game.SCALE);
         }

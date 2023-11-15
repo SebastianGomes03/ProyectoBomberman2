@@ -37,14 +37,18 @@ public class HelpMethods {
         return IsTileSolid((int)xIndex, (int)yIndex, lvlData);
     }
 
-    public static boolean IsTileSolid(int xTile, int yTile, int[][] lvlData){
-        int value = lvlData[yTile][(xTile)];
+	public static boolean IsTileSolid(int xTile, int yTile, int[][] lvlData) {
+		int value = lvlData[yTile][xTile];
 
-		
-        if(value >= 48 || value < 0 || value != 11)
+		//System.out.println(value);
+		switch (value) {
+		case 11, 48, 49:
+			return false;
+		default:
 			return true;
-        return false;
-    }
+		}
+
+	}
 	
     public static float GetEntityXPosNextToWall(Rectangle2D.Float hitbox, float xSpeed){
         int currentTile = (int)(hitbox.x / Game.TILES_SIZE);

@@ -44,7 +44,7 @@ public class Level {
 	}
 
 	private void createPotions() {
-	//	potions = HelpMethods.GetPotions(img);
+		potions = HelpMethods.GetPotions(img);
 	}
 
 	private void createLevelData() {

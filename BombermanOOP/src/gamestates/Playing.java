@@ -34,6 +34,8 @@ public class Playing extends State implements Statemethods {
 	private BufferedImage backgroundImg;
 	//private Random rnd = new Random();
 
+	private boolean playerDying;
+
 	public Playing(Game game) {
 		super(game);
 		initClasses();
@@ -63,15 +65,18 @@ public class Playing extends State implements Statemethods {
 
 	@Override
 	public void update() {
-		if(paused){
+		if(paused) {
 			pauseOverlay.update();
-		}else{
+		} else if(playerDying) {
+			player.update();
+		} else {
 			levelManager.update();
 			objectManager.update();
 			player.update();
 			checkCloseToBorder();
 		}
 	}
+
 
 	private void checkCloseToBorder() {
 		int playerX = (int)player.getHitbox().x;
@@ -116,11 +121,17 @@ public class Playing extends State implements Statemethods {
 		this.gameOver = gameOver;
 	}
 
-	public void checkObjectHit(Rectangle2D.Float attackBox){
-		objectManager.checkObjectHit(attackBox);
+	public boolean checkObjectCollision(Rectangle2D.Float hitbox, boolean moving){
+		return (objectManager.checkObjectCollision(player.getHitbox(), player.getMoving()));
 	}
 
+	public void checkObjectTouched(Rectangle2D.Float hitbox){
+		objectManager.checkObjectTouched(player.getHitbox());
+	}
 
+	public void checkObjectHit(Rectangle2D.Float hitbox){
+		objectManager.checkObjectHit(player.getHitbox());
+	}
 
 
 	@Override
@@ -133,7 +144,7 @@ public class Playing extends State implements Statemethods {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-        //if(gameOver)
+        if(!gameOver){
         //gameOverOverlay.keyPressed(e);
 		//else
 			switch (e.getKeyCode()) {
@@ -156,11 +167,12 @@ public class Playing extends State implements Statemethods {
 				paused = !paused;
 				break;
 			}
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if(!gameOver)
+		if(!gameOver){
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_A:
 				player.setLeft(false);
@@ -178,6 +190,7 @@ public class Playing extends State implements Statemethods {
 			//	player.setJump(false);
 			//	break;
 			}
+		}
 
 	}
 
@@ -234,4 +247,8 @@ public class Playing extends State implements Statemethods {
 	public LevelManager getLevelManager(){
 		return levelManager;
 	}
+
+    public void setPlayerDying(boolean playerDying) {
+		this.playerDying = playerDying;
+    }
 }

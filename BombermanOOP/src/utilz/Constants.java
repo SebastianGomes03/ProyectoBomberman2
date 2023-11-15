@@ -28,16 +28,16 @@ public class Constants {
 		public static final int CONTAINER_WIDTH = (int) (Game.SCALE * CONTAINER_WIDTH_DEFAULT);
 		public static final int CONTAINER_HEIGHT = (int) (Game.SCALE * CONTAINER_HEIGHT_DEFAULT);
 
-		//public static final int BOMB_WIDTH_DEFAULT = 12;
-		//public static final int BOMB_HEIGHT_DEFAULT = 16;
-		//public static final int BOMB_WIDTH = (int) (Game.SCALE * BOMB_WIDTH_DEFAULT);
-		//public static final int BOMB_HEIGHT = (int) (Game.SCALE * BOMB_HEIGHT_DEFAULT);
+		public static final int POTION_WIDTH_DEFAULT = 12;
+		public static final int POTION_HEIGHT_DEFAULT = 16;
+		public static final int POTION_WIDTH = (int) (Game.SCALE * POTION_WIDTH_DEFAULT);
+		public static final int POTION_HEIGHT = (int) (Game.SCALE * POTION_HEIGHT_DEFAULT);
 
 
 		public static int GetSpriteAmount(int object_type) {
 			switch (object_type) {
 			//case BOMB:
-			case RED_POTION:
+			//case RED_POTION:
 			case BLUE_POTION:
 				return 7;
 			case BARREL:
@@ -84,6 +84,7 @@ public class Constants {
 		public static final int UPP = 0;
 		public static final int IDLE = 4;
 		public static final int DOWNP = 1;
+		public static final int DEAD = 4;
 		//public static final int JUMP = 2;
 		//public static final int FALLING = 3;
 		//public static final int GROUND = 4;
@@ -99,6 +100,7 @@ public class Constants {
 			case RIGHTP:
 			case UPP:
 			case DOWNP:
+			case DEAD:
 				return 4;
 			//case IDLE:
 			//	return 1;
