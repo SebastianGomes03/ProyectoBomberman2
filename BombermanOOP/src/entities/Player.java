@@ -45,17 +45,51 @@ public class Player extends Entity {
 		hitbox.y = y;
 	}
 
-	public void update() {
-		float xSpeed = 0, ySpeed = 0;
-		updatePos();
-		updateAnimationTick();
-		//while(checkObjectCollision()){
-		//	playerSpeed = 0;
-		//	moving = false;
-		//}
+	//public void update() {
+	//	float xSpeed = 0, ySpeed = 0;
+	//	updatePos();
+	//	updateAnimationTick();
+	//	//while(checkObjectCollision()){
+	//	//	playerSpeed = 0;
+	//	//	moving = false;
+	//	//}
+	//	checkBoxTouched();
+	//	checkObjectTouched();
+	//	setAnimation();	
+	//}
+
+		public void update() {
+		//updateHealthBar();
+		//updatePowerBar();
+
+		if (currentHealth <= 0) {
+			if (state != DEAD) {
+				state = DEAD;
+				aniTick = 0;
+				aniIndex = 0;
+				playing.setPlayerDying(true);
+				//playing.getGame().getAudioPlayer().playEffect(AudioPlayer.DIE);
+			} else if (aniIndex == GetSpriteAmount(DEAD) - 1 && aniTick >= 25 - 1) {
+				playing.setGameOver(true);
+				//playing.getGame().getAudioPlayer().stopSong();
+				//playing.getGame().getAudioPlayer().playEffect(AudioPlayer.GAMEOVER);
+			} else {
+				updateAnimationTick();
+			}
+
+			return;
+		}
+			updatePos();
+
+		if (moving) {
+			checkObjectTouched();
+			//checkSpikesTouched();
+			//checkInsideWater();
+		}
 		checkBoxTouched();
 		checkObjectTouched();
-		setAnimation();	
+		updateAnimationTick();
+		setAnimation();
 	}
 
 	public void render(Graphics g, int lvlOffset) {
@@ -70,8 +104,6 @@ public class Player extends Entity {
 			aniIndex++;
 			if (aniIndex >= GetSpriteAmount(playerAction)) {
 				aniIndex = 0;
-				//attacking = false;
-				//attackChecked = false;
 			}
 			if(playerAction == IDLE)
 				resetAniTick();
