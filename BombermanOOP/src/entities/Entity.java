@@ -17,6 +17,7 @@ public abstract class Entity {
 	protected int maxHealth;
 	protected int currentHealth;
 
+	//entity
 	public Entity(float x, float y, int width, int height) {
 		this.x = x ;
 		this.y = y;
